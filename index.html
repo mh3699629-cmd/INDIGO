@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lingua — English for every level</title>
+<script>
+try{document.documentElement.dataset.theme=localStorage.getItem('lingua-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafaf9;--sf:#fff;--sf2:#f5f5f4;--ink:#0a0a0a;--ink2:#404040;--ink3:#737373;--bd:#e5e5e5;--bd2:#d4d4d4;--ac:#c2410c;--ach:#9a3412;--acs:#fff7ed;--acf:#fff;--ok:#16a34a;--bad:#dc2626;--ring:rgba(194,65,12,.3);--sh:0 4px 12px rgba(0,0,0,.08)}
+:root[data-theme="dark"]{--bg:#0a0a0a;--sf:#141414;--sf2:#1a1a1a;--ink:#fafafa;--ink2:#d4d4d4;--ink3:#a3a3a3;--bd:#262626;--bd2:#404040;--ac:#f97316;--ach:#fb923c;--acs:#1c1917;--acf:#0a0a0a;--ring:rgba(249,115,22,.35);--sh:0 4px 12px rgba(0,0,0,.6)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{font-family:Inter,system-ui,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
+svg{width:18px;height:18px;flex:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.wrap{max-width:1100px;margin:auto;padding:0 24px}.narrow{max-width:720px}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:8px;font-size:.9rem;font-weight:600;border:1px solid transparent}
+.pri{background:var(--ac);color:var(--acf)}.pri:hover{background:var(--ach)}
+.gho{border-color:var(--bd2)}.gho:hover{background:var(--sf2)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--bd)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.mark{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--ac);color:var(--acf);font:400 1.3rem 'Instrument Serif',serif}
+.links{display:flex;gap:26px;font-size:.9rem;font-weight:500;color:var(--ink2)}.links a:hover{color:var(--ink)}
+.acts{display:flex;align-items:center;gap:8px}
+.ib{display:grid;place-items:center;width:38px;height:38px;border-radius:8px;color:var(--ink2)}.ib:hover{background:var(--sf2)}
+.moon{display:none}[data-theme="dark"] .sun{display:none}[data-theme="dark"] .moon{display:block}
+#menuBtn{display:none}
+.mnav{display:none;flex-direction:column;padding:8px 24px 16px;border-top:1px solid var(--bd)}.mnav.open{display:flex}.mnav a{padding:10px 0;color:var(--ink2);font-weight:500}
+.hero{text-align:center;padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,70px)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--bd);border-radius:99px;background:var(--sf);font-size:.8rem;color:var(--ink2);margin-bottom:26px}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.hero h1{font:400 clamp(2.5rem,6vw,4.5rem)/1.05 'Instrument Serif',Georgia,serif;letter-spacing:-.03em;margin-bottom:22px}
+.hero em{color:var(--ac)}
+.hero p{max-width:600px;margin:0 auto 32px;color:var(--ink2);font-size:1.05rem}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;padding:18px;background:var(--sf);border:1px solid var(--bd);border-radius:12px;max-width:600px;margin:auto}
+.stats b{display:block;font-size:1.1rem}.stats span{font-size:.75rem;color:var(--ink3)}
+section{padding:clamp(56px,8vw,96px) 0}.alt{background:var(--sf2)}
+.head{text-align:center;max-width:620px;margin:0 auto 48px}
+.eye{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--ac);margin-bottom:10px;display:block}
+.head h2{font:400 clamp(1.9rem,4vw,2.7rem)/1.15 'Instrument Serif',Georgia,serif;margin-bottom:10px}
+.head p{color:var(--ink2)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;padding:22px;background:var(--sf);border:1px solid var(--bd);border-radius:12px;transition:.2s}
+.card:hover{border-color:var(--ac);box-shadow:var(--sh);transform:translateY(-2px)}
+.ci{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;background:var(--acs);color:var(--ac)}.ci svg{width:22px;height:22px}
+.card h3{font-size:1.02rem}.card .d{font-size:.88rem;color:var(--ink2);flex:1}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--ink3);padding-top:12px;border-top:1px solid var(--bd)}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.lv{padding:3px 8px;border-radius:4px;font-size:.7rem;font-weight:600;text-transform:uppercase;background:var(--acs);color:var(--ac)}
+.ct{font-size:.75rem;color:var(--ink3)}
+.rd{font-size:.8rem;font-weight:600;color:var(--ac)}
+.tool{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:28px}
+.srch{flex:1;min-width:220px;max-width:320px;padding:10px 14px;border:1px solid var(--bd);border-radius:8px;background:var(--sf);color:var(--ink);font:inherit;font-size:.9rem}
+.fl{display:flex;gap:6px;flex-wrap:wrap}
+.fb{padding:8px 14px;border-radius:8px;font-size:.82rem;font-weight:500;color:var(--ink2);background:var(--sf);border:1px solid var(--bd);white-space:nowrap}
+.fb[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.empty{text-align:center;padding:50px;color:var(--ink3)}
+.qc{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:26px}
+.qh{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--bd)}
+.sel{flex:1;min-width:160px;padding:9px 12px;border:1px solid var(--bd);border-radius:8px;background:var(--sf);color:var(--ink);font:inherit}
+.qb{display:flex;flex-direction:column;gap:20px}
+.q{padding:16px;background:var(--sf2);border:1px solid var(--bd);border-radius:12px}.q.miss{border-color:var(--bad)}
+.q h4{font-size:.95rem;margin-bottom:12px}
+.opt{display:flex;gap:10px;align-items:center;padding:10px 14px;margin-bottom:8px;border:1px solid var(--bd);border-radius:8px;background:var(--sf);cursor:pointer;font-size:.9rem}
+.opt:has(input:checked){border-color:var(--ac)}.opt input{accent-color:var(--ac)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}.opt.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.note{font-size:.85rem;color:var(--ink2)}
+.res{margin-top:18px;padding:14px;border-radius:8px;background:var(--acs);color:var(--ac);font-weight:600;text-align:center}.res:empty{display:none}
+.panel{padding:clamp(32px,6vw,56px);background:var(--ink);color:var(--bg);border-radius:24px;text-align:center}
+.panel h2{font:400 clamp(1.75rem,4vw,2.5rem)/1.2 'Instrument Serif',serif;margin-bottom:10px}.panel p{opacity:.8;margin-bottom:24px}
+.panel .gho{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 35%,transparent)}
+[data-theme="dark"] .panel{background:var(--sf);color:var(--ink);border:1px solid var(--bd)}[data-theme="dark"] .panel .gho{color:var(--ink)}
+footer{border-top:1px solid var(--bd);padding:36px 0;font-size:.85rem;color:var(--ink3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.modal{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px}
+.modal[aria-hidden=false]{display:flex}
+.bk{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.mp{position:relative;display:flex;flex-direction:column;width:100%;max-width:660px;max-height:85vh;background:var(--bg);border:1px solid var(--bd);border-radius:16px;overflow:hidden}
+.mh{display:flex;justify-content:space-between;gap:16px;padding:22px 24px 14px;border-bottom:1px solid var(--bd)}
+.mh h2{font:400 1.6rem/1.25 'Instrument Serif',serif;margin-top:6px}
+.mbd{padding:22px 24px;overflow-y:auto;color:var(--ink2);line-height:1.7}
+.mbd h3{font-size:1rem;color:var(--ink);margin:18px 0 6px}.mbd h3:first-child{margin-top:0}.mbd p{margin-bottom:10px}.mbd b{color:var(--ink)}
+@media(max-width:760px){.links,.acts .btn{display:none}#menuBtn{display:grid}.stats{gap:18px}}
+@media(max-width:560px){.cta{flex-direction:column}.fl{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:4px}.grid{grid-template-columns:1fr}}
+.hud{display:flex;gap:6px}.pill{padding:5px 10px;border-radius:99px;background:var(--sf2);border:1px solid var(--bd);font-size:.82rem;font-weight:600;white-space:nowrap}
+.lvl{background:var(--acs);color:var(--ac)}
+.xpbar,.bar{height:6px;background:var(--bd);border-radius:9px;overflow:hidden}.xpbar{border-radius:0}
+.xpbar i,.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f59e0b,var(--ac));transition:width .5s cubic-bezier(.2,1.4,.4,1)}
+.prog{display:flex;align-items:center;gap:14px;max-width:420px;margin:0 auto 24px;font-size:.85rem;font-weight:600}.prog .bar{flex:1;height:10px}
+.btn{box-shadow:0 4px 0 rgba(0,0,0,.18);transition:transform .08s,box-shadow .08s}.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.18)}
+.pri{box-shadow:0 4px 0 var(--ach)}.pri:active{box-shadow:0 1px 0 var(--ach)}
+.big{width:100%;padding:14px;font-size:1rem;margin-top:16px}.btn:disabled{opacity:.6;cursor:default}
+.card:active{transform:scale(.98)}
+.gs{display:flex;justify-content:space-between;font-weight:700;margin-bottom:10px}
+.qt{font-size:1.25rem;margin:18px 0 14px}
+.ob{display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:10px;border:2px solid var(--bd);border-radius:12px;background:var(--sf);font-weight:600;box-shadow:0 3px 0 var(--bd);transition:transform .08s}
+.ob:hover:not(:disabled){border-color:var(--ac)}.ob:active:not(:disabled){transform:translateY(3px);box-shadow:none}
+.ob.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,transparent);animation:pop .35s}
+.ob.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,transparent);animation:shake .35s}
+.note.g{color:var(--ok);font-weight:700}.note.r{color:var(--bad);font-weight:700}
+.fin{text-align:center;padding:10px 0}.stars{font-size:2.4rem;letter-spacing:6px;animation:pop .5s}.fin h3{font-size:1.5rem;margin:8px 0}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;padding:10px 18px;border-radius:99px;background:var(--ink);color:var(--bg);font-weight:700;z-index:200;pointer-events:none}
+#toast.show{animation:toast 1.8s ease}
+.cf{position:fixed;top:40%;left:50%;font-size:1.4rem;z-index:150;pointer-events:none;animation:fall 1.2s ease-out forwards}
+@keyframes pop{50%{transform:scale(1.06)}}@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes toast{15%,80%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-10px)}}
+@keyframes fall{to{transform:translate(var(--x),var(--y)) rotate(360deg);opacity:0}}
+@media(max-width:420px){.lvl{display:none}.nav .wrap{gap:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+<a href="#" class="brand" aria-label="Lingua home"><span class="mark">L</span>Lingua</a>
+<nav class="links" aria-label="Primary"><a href="#categories">Categories</a><a href="#lessons">Lessons</a><a href="#quiz">Practice</a></nav>
+<div class="acts"><div class="hud" aria-label="Your progress"><span class="pill" title="Day streak">🔥 <b id="hStreak">0</b></span><span class="pill" title="XP">⚡ <b id="hXp">0</b></span><span class="pill lvl">Lv <b id="hLvl">1</b></span></div>
+<button class="ib" id="themeBtn" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg></button>
+<a href="#lessons" class="btn pri">Start learning</a>
+<button class="ib" id="menuBtn" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div></div>
+<div class="mnav" id="mnav"><a href="#categories">Categories</a><a href="#lessons">Lessons</a><a href="#quiz">Practice</a></div>
+<div class="xpbar"><i id="xpFill"></i></div></header>
+<main>
+<div class="hero"><div class="wrap">
+<div class="badge"><i></i>Earn XP · Build streaks · Free</div>
+<h1>English fluency,<br><em>structured</em> for every level.</h1>
+<p>A clean, category-based learning site for kids, beginners, professionals and exam aspirants. No sign-up. No ads.</p>
+<div class="cta"><a href="#categories" class="btn pri">Browse categories</a><a href="#quiz" class="btn gho">Take a quick test</a></div>
+<div class="stats"><div><b id="nL">14</b><span>Lessons</span></div><div><b id="nC">6</b><span>Categories</span></div><div><b>100%</b><span>Free</span></div><div><b>A1–C1</b><span>Levels + exams</span></div></div>
+</div></div>
+<section id="categories"><div class="wrap"><div class="head"><span class="eye">Categories</span><h2>Pick where you are.</h2><p>Six paths, one goal. Each is built for a distinct learner.</p></div><div class="grid" id="catGrid"></div></div></section>
+<section class="alt" id="lessons"><div class="wrap"><div class="head"><span class="eye">Library</span><h2>All lessons</h2><p>Filter by category or search by keyword.</p></div>
+<div class="prog"><span><b id="pDone">0</b>/<span id="nL2">14</span> done</span><div class="bar"><i id="pFill"></i></div></div>
+<div class="tool"><input type="search" class="srch" id="search" placeholder="Search lessons…" aria-label="Search lessons"><div class="fl" id="filters"></div></div>
+<div class="grid" id="lessonGrid"></div><p class="empty" id="empty" hidden>No lessons match your search.</p></div></section>
+<section id="quiz"><div class="wrap narrow"><div class="head"><span class="eye">Practice</span><h2>Quick check-in</h2><p>3 hearts. 3 questions. Keep your combo alive 🔥</p></div>
+<div class="qc"><div class="qh"><label for="quizCat"><b>Level</b></label>
+<select id="quizCat" class="sel" aria-label="Quiz category"></select>
+<button class="btn pri" id="startQuiz">Restart</button></div>
+<div class="qb" id="quizBox"></div><div class="res" id="quizRes" role="status" aria-live="polite"></div></div></div></section>
+<section class="alt"><div class="wrap narrow"><div class="panel"><h2>Start today. Finish at your pace.</h2><p>No account needed. Bookmark this page.</p><div class="cta" style="margin:0"><a href="#categories" class="btn pri">Browse categories</a><a href="#quiz" class="btn gho">Try a test</a></div></div></div></section>
+</main>
+<footer><div class="wrap"><span>© <span id="year"></span> Lingua</span><span>English for every level</span></div></footer>
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="bk" data-close></div>
+<div class="mp"><div class="mh"><div><span class="lv" id="mLevel"></span><h2 id="mTitle"></h2></div><button class="ib" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div><div class="mbd" id="mBody"></div></div></div>
+<script>
+const DEF='M4 5h16v15H4zM8 9h8M8 13h8';
+fetch('content.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{
+const L=d.lessons.map(x=>({id:x.id,c:x.category,l:x.level,t:x.title,d:x.desc,h:x.html}));
+const C=d.categories.map(x=>[x.key,x.name,x.desc,x.icon||DEF]);
+const CN=Object.fromEntries(C.map(c=>[c[0],c[1]]));
+const Q={};Object.entries(d.quiz||{}).forEach(([k,v])=>{Q[k]=v.map(x=>[x.q,x.options,x.answer])});
+if(new Set(L.map(x=>x.id)).size!==L.length)console.warn('Duplicate lesson id in content.json');
+const g=i=>document.getElementById(i);
+g('nL').textContent=L.length;g('nL2').textContent=L.length;g('nC').textContent=C.length;
+g('quizCat').innerHTML=C.filter(c=>Q[c[0]]&&Q[c[0]].length).map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('');
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const st={f:'all',q:''};let last=null;
+const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+$('#catGrid').innerHTML=C.map(c=>`<button class="card" data-c="${c[0]}"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${c[3]}"/></svg></span><h3>${c[1]}</h3><span class="d">${c[2]}</span><span class="meta"><span><b>${L.filter(l=>l.c===c[0]).length}</b> lessons</span>${arrow}</span></button>`).join('');
+$$('#catGrid .card').forEach(b=>b.onclick=()=>{setF(b.dataset.c);$('#lessons').scrollIntoView({behavior:'smooth'})});
+$('#filters').innerHTML=[['all','All'],...C].map(c=>`<button class="fb" data-k="${c[0]}" aria-pressed="${c[0]==='all'}">${c[1]}</button>`).join('');
+$$('.fb').forEach(b=>b.onclick=()=>setF(b.dataset.k));
+function setF(k){st.f=k;$$('.fb').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===k)));render()}
+function render(){const q=st.q.toLowerCase().trim();
+const r=L.filter(l=>(st.f==='all'||l.c===st.f)&&(!q||(l.t+' '+l.d+' '+l.l).toLowerCase().includes(q)));
+$('#empty').hidden=r.length>0;
+$('#lessonGrid').innerHTML=r.map(l=>`<button type="button" class="card" data-id="${l.id}"><span class="top"><span class="lv">${l.l}</span><span class="ct">${S.done.includes(l.id)?'✅ ':''}${CN[l.c]}</span></span><h3>${l.t}</h3><span class="d">${l.d}</span><span class="rd">Read lesson →</span></button>`).join('');
+$$('#lessonGrid .card').forEach(b=>b.onclick=()=>openL(+b.dataset.id))}
+function openL(id){const l=L.find(x=>x.id===id);if(!l)return;last=document.activeElement;
+$('#mLevel').textContent=l.l;$('#mTitle').textContent=l.t;const dn=S.done.includes(id);$('#mBody').innerHTML=l.h+`<button class="btn pri big" id="done" ${dn?'disabled':''}>${dn?'✅ Completed':'Mark complete · +20 XP'}</button>`;
+$('#done').onclick=()=>{if(S.done.includes(id))return;S.done.push(id);gain(20);boom();toast('+20 XP ⚡');$('#done').disabled=true;$('#done').textContent='✅ Completed';render();last=$(`#lessonGrid [data-id="${id}"]`)||last};
+$('#modal').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('.mh .ib').focus()}
+function closeM(){$('#modal').setAttribute('aria-hidden','true');document.body.style.overflow='';if(last)last.focus()}
+$$('[data-close]').forEach(e=>e.onclick=closeM);
+document.addEventListener('keydown',e=>{const m=$('#modal');if(m.getAttribute('aria-hidden')!=='false')return;
+if(e.key==='Escape')return closeM();
+if(e.key==='Tab'){const f=$$('button',m),a=f[0],z=f[f.length-1];
+if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+$('#startQuiz').onclick=play;$('#quizCat').onchange=play;
+$('#search').oninput=e=>{st.q=e.target.value;render()};
+$('#themeBtn').onclick=()=>{const n=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('lingua-theme',n)}catch(e){}};
+$('#menuBtn').onclick=()=>$('#mnav').classList.toggle('open');
+$$('#mnav a').forEach(a=>a.onclick=()=>$('#mnav').classList.remove('open'));
+$('#year').textContent=new Date().getFullYear();
+document.body.insertAdjacentHTML('beforeend','<div id="toast" role="status" aria-live="polite"></div>');
+let S;try{S=JSON.parse(localStorage.getItem('lingua-game'))}catch(e){}
+S=Object.assign({xp:0,streak:0,day:'',done:[]},S||{});
+const today=()=>new Date().toLocaleDateString('en-CA'),yest=()=>new Date(Date.now()-864e5).toLocaleDateString('en-CA');
+if(S.day&&S.day!==today()&&S.day!==yest())S.streak=0;
+const save=()=>{try{localStorage.setItem('lingua-game',JSON.stringify(S))}catch(e){}};
+const lvl=x=>Math.floor(x/100)+1;
+function hud(){$('#hStreak').textContent=S.streak;$('#hXp').textContent=S.xp;$('#hLvl').textContent=lvl(S.xp);$('#xpFill').style.width=(S.xp%100)+'%';$('#pDone').textContent=S.done.length;$('#pFill').style.width=S.done.length/L.length*100+'%'}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.remove('show');void t.offsetWidth;t.classList.add('show')}
+function boom(){const e=['🎉','⭐','✨','🔥','⚡'];for(let i=0;i<22;i++){const s=document.createElement('span');s.className='cf';s.textContent=e[i%5];s.style.setProperty('--x',(Math.random()*500-250)+'px');s.style.setProperty('--y',(Math.random()*-300-60)+'px');document.body.appendChild(s);setTimeout(()=>s.remove(),1300)}}
+function gain(n){const b=lvl(S.xp);S.xp+=n;if(S.day!==today()){S.streak=S.day===yest()?S.streak+1:1;S.day=today();toast(`🔥 ${S.streak}-day streak!`)}save();hud();if(lvl(S.xp)>b){boom();toast(`🎉 Level ${lvl(S.xp)}!`)}}
+let G;
+function play(){G={d:Q[$('#quizCat').value],i:0,h:3,s:0,c:0,xp:0};$('#quizRes').textContent='';ask()}
+const gs=()=>`<div class="gs"><span>${'❤️'.repeat(G.h)}${'🖤'.repeat(3-G.h)}</span><span>${G.c>1?'🔥 x'+G.c:''}</span><span>${Math.min(G.i+1,G.d.length)}/${G.d.length}</span></div>`;
+function ask(){const q=G.d[G.i];$('#quizBox').innerHTML=gs()+`<div class="bar"><i style="width:${G.i/G.d.length*100}%"></i></div><h4 class="qt">${q[0]}</h4>`+q[1].map((o,j)=>`<button class="ob" data-j="${j}">${o}</button>`).join('')+'<div id="fb"></div>';$$('.ob').forEach(b=>b.onclick=()=>pick(+b.dataset.j))}
+function pick(j){const q=G.d[G.i],bs=$$('.ob'),ok=j===q[2];bs.forEach(b=>b.disabled=true);bs[q[2]].classList.add('ok');
+if(ok){G.s++;G.c++;const x=10+(G.c>=3?5:0);G.xp+=x;gain(x);toast(`+${x} XP ⚡`)}else{bs[j].classList.add('no');G.h--;G.c=0}
+$('.gs').outerHTML=gs();const over=G.h<=0,fin=G.i===G.d.length-1;
+$('#fb').innerHTML=`<p class="note ${ok?'g':'r'}">${ok?'Correct! 🎯':'Correct answer: '+q[1][q[2]]}</p><button class="btn pri big" id="nx">${over||fin?'See result':'Continue'}</button>`;
+$('#nx').focus();$('#nx').onclick=()=>{if(over||fin)end(over);else{G.i++;ask()}}}
+function end(over){let b='';if(!over&&G.s===G.d.length){G.xp+=20;gain(20);b=' (+20 perfect bonus)'}const st=over?0:G.s;if(!over)boom();
+$('#quizBox').innerHTML=`<div class="fin"><div class="stars">${'⭐'.repeat(st)}${'☆'.repeat(3-st)}</div><h3>${over?'Out of hearts 💔':G.s===G.d.length?'Perfect run!':'Nice work!'}</h3><p>${G.s}/${G.d.length} correct · +${G.xp} XP${b}</p><button class="btn pri big" id="again">Play again</button></div>`;$('#again').onclick=play}
+render();hud();play();
+}).catch(e=>{console.error(e);document.getElementById('lessonGrid').innerHTML='<p class="empty">Content load nahi hua. Site ko GitHub Pages ya Live Server se kholo, file ko seedha double-click mat karo.</p>'});
+</script>
+</body>
+</html>
